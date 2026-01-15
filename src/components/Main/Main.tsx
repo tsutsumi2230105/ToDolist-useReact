@@ -5,17 +5,19 @@ import "./Main.css"
 type Todo = {
   id: string
   title: string
+  completed: boolean // ✅追加
 }
 
 type Props = {
   todos: Todo[]
   onAddTodo: (title: string) => void
   onDeleteTodo: (id: string) => void
+  onToggleTodo: (id: string) => void // ✅追加
 }
 
 // ✅ ここに onDeleteTodo を追加
-export default function Main({ todos, onAddTodo, onDeleteTodo }: Props) {
-  const [input, setInput] = useState("")
+export default function Main({ todos, onAddTodo, onDeleteTodo, onToggleTodo }: Props) {
+    const [input, setInput] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -36,8 +38,17 @@ export default function Main({ todos, onAddTodo, onDeleteTodo }: Props) {
 
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
-            {todo.title}
+          <li key={todo.id} className="todo-item">
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => onToggleTodo(todo.id)}
+            />
+
+            <span className={todo.completed ? "todo-title done" : "todo-title"}>
+              {todo.title}
+            </span>
+
             <button type="button" onClick={() => onDeleteTodo(todo.id)}>
               削除
             </button>
