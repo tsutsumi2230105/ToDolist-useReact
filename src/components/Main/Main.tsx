@@ -13,10 +13,17 @@ type Props = {
   onAddTodo: (title: string) => void
   onDeleteTodo: (id: string) => void
   onToggleTodo: (id: string) => void // ✅追加
+  activeCount: number   // ✅ 追加
 }
 
 // ✅ ここに onDeleteTodo を追加
-export default function Main({ todos, onAddTodo, onDeleteTodo, onToggleTodo }: Props) {
+export default function Main({
+  todos,
+  onAddTodo,
+  onDeleteTodo,
+  onToggleTodo,
+  activeCount,
+}: Props) {
     const [input, setInput] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,6 +43,8 @@ export default function Main({ todos, onAddTodo, onDeleteTodo, onToggleTodo }: P
         />
         <button type="submit" className="add-button">追加</button>
       </form>
+
+      
 
       <ul>
         {todos.map((todo) => (
@@ -60,9 +69,12 @@ export default function Main({ todos, onAddTodo, onDeleteTodo, onToggleTodo }: P
               aria-label="削除"
             >
             </button>
+
           </li>
         ))}
       </ul>
+      <p>残り {activeCount} 件</p>
     </main>
   )
 }
+
