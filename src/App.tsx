@@ -24,12 +24,20 @@ title: trimmed,
 setTodos((prev) => [newTodo, ...prev])
 }
 
+  // ✅ これを追加
+  const deleteTodo = (id: string) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id))
+  }
 
-return (
-<>
-<Header />
-<Main todos={todos} onAddTodo={addTodo} />
-<Footer />
-</>
-)
+  return (
+    <>
+      <Header />   {/* ← これがないと表示されない */}
+      <Main
+        todos={todos}
+        onAddTodo={addTodo}
+        onDeleteTodo={deleteTodo}
+      />
+      <Footer />   {/* ← これも */}
+    </>
+  )
 }
