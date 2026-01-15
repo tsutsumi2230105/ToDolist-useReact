@@ -29,28 +29,36 @@ export default function Main({ todos, onAddTodo, onDeleteTodo, onToggleTodo }: P
     <main>
       <form onSubmit={handleSubmit}>
         <input
+          className="todo-input"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="ToDoを入力"
+          placeholder="What needs to be done?"
         />
-        <button type="submit">追加</button>
+        <button type="submit" className="add-button">追加</button>
       </form>
 
       <ul>
         {todos.map((todo) => (
           <li key={todo.id} className="todo-item">
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => onToggleTodo(todo.id)}
-            />
+            <label className="todo-check">
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => onToggleTodo(todo.id)}
+              />
+              <span className="todo-check-icon" aria-hidden="true" />
+            </label>
 
             <span className={todo.completed ? "todo-title done" : "todo-title"}>
               {todo.title}
             </span>
 
-            <button type="button" onClick={() => onDeleteTodo(todo.id)}>
-              削除
+            <button
+              type="button"
+              className="delete-button"
+              onClick={() => onDeleteTodo(todo.id)}
+              aria-label="削除"
+            >
             </button>
           </li>
         ))}
