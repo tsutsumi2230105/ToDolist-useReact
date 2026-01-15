@@ -1,4 +1,4 @@
-import './footer.css'
+import "./Footer.scss";  // ← ファイル名・大文字小文字も一致させる
 
 const Footer = () => {
   return (

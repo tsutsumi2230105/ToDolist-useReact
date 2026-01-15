@@ -1,6 +1,6 @@
 // src/components/Main/Main.tsx
 import { useState } from "react"
-import "./Main.css"
+import "./Main.scss"
 
 type Todo = {
   id: string
