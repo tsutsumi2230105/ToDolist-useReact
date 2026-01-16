@@ -10,6 +10,8 @@ type Todo = {
   completed: boolean
 }
 
+export type Filter = "all" | "active" | "completed"
+
 const STORAGE_KEY = "todos_v1"
 
 export default function App() {
@@ -19,17 +21,15 @@ export default function App() {
       const saved = localStorage.getItem(STORAGE_KEY)
       if (!saved) return []
       const parsed = JSON.parse(saved)
-
-      // ざっくり型チェック（壊れたデータ対策）
       if (!Array.isArray(parsed)) return []
-      return parsed
+      return parsed as Todo[]
     } catch {
       return []
     }
   })
 
-  // ✅ 追加：完了(true)だけ表示するか
-  const [showCompletedOnly, setShowCompletedOnly] = useState(false)
+  // ✅ 追加：フィルタ（全て / 未完了 / 完了）
+  const [filter, setFilter] = useState<Filter>("all")
 
   // ✅ todos が変わるたびに保存
   useEffect(() => {
@@ -45,7 +45,6 @@ export default function App() {
       title: trimmed,
       completed: false,
     }
-
     setTodos((prev) => [newTodo, ...prev])
   }
 
@@ -59,28 +58,28 @@ export default function App() {
     )
   }
 
-  const activeCount = todos.filter(todo => !todo.completed).length
+  const activeCount = todos.filter((t) => !t.completed).length
 
-  // ✅ 追加：表示用の配列（ここがポイント）
-  const visibleTodos = showCompletedOnly
-    ? todos.filter((t) => t.completed)
-    : todos
-
+  // ✅ フィルタに応じて「表示するToDo」だけを作る
+  const visibleTodos =
+    filter === "active"
+      ? todos.filter((t) => !t.completed)
+      : filter === "completed"
+      ? todos.filter((t) => t.completed)
+      : todos
 
   return (
     <>
       <Header />
-
       <Main
-        todos={visibleTodos}   // ✅ ここを差し替え
+        todos={visibleTodos}
         onAddTodo={addTodo}
         onDeleteTodo={deleteTodo}
         onToggleTodo={toggleTodo}
         activeCount={activeCount}
-        showCompletedOnly={showCompletedOnly}
-        onChangeShowCompletedOnly={setShowCompletedOnly}
+        filter={filter}
+        onChangeFilter={setFilter}
       />
-
       <Footer />
     </>
   )

@@ -1,32 +1,32 @@
 // src/components/Main/Main.tsx
 import { useState } from "react"
 import "./Main.scss"
+import type { Filter } from "../../App"
 
 type Todo = {
   id: string
   title: string
-  completed: boolean // ✅追加
+  completed: boolean
 }
 
 type Props = {
   todos: Todo[]
   onAddTodo: (title: string) => void
   onDeleteTodo: (id: string) => void
-  onToggleTodo: (id: string) => void // ✅追加
-  activeCount: number   // ✅ 追加
-  showCompletedOnly: boolean
-  onChangeShowCompletedOnly: (next: boolean) => void
+  onToggleTodo: (id: string) => void
+  activeCount: number
+  filter: Filter
+  onChangeFilter: (next: Filter) => void
 }
 
-// ✅ ここに onDeleteTodo を追加
 export default function Main({
   todos,
   onAddTodo,
   onDeleteTodo,
   onToggleTodo,
   activeCount,
-  showCompletedOnly,
-  onChangeShowCompletedOnly,
+  filter,
+  onChangeFilter,
 }: Props) {
   const [input, setInput] = useState("")
 
@@ -45,10 +45,10 @@ export default function Main({
           onChange={(e) => setInput(e.target.value)}
           placeholder="What needs to be done?"
         />
-        <button type="submit" className="add-button">追加</button>
+        <button type="submit" className="add-button">
+          追加
+        </button>
       </form>
-
-      
 
       <ul>
         {todos.map((todo) => (
@@ -71,26 +71,37 @@ export default function Main({
               className="delete-button"
               onClick={() => onDeleteTodo(todo.id)}
               aria-label="削除"
-            >
-            </button>
-
+            />
           </li>
         ))}
       </ul>
+
+            {/* ✅ 追加：フィルタボタン（全て / 未完了 / 完了） */}
+      <div className="filters" style={{ width: 550, margin: "12px auto" }}>
+        <button
+          type="button"
+          className={filter === "all" ? "is-active" : ""}
+          onClick={() => onChangeFilter("all")}
+        >
+          全て
+        </button>
+        <button
+          type="button"
+          className={filter === "active" ? "is-active" : ""}
+          onClick={() => onChangeFilter("active")}
+        >
+          未完了
+        </button>
+        <button
+          type="button"
+          className={filter === "completed" ? "is-active" : ""}
+          onClick={() => onChangeFilter("completed")}
+        >
+          完了
+        </button>
+      </div>
+
       <p>残り {activeCount} 件</p>
-    
-      {/* ✅ 追加：表示切り替えUI（場所はここじゃなくてもOK） */}
-      <label style={{ display: "block", width: 550, margin: "12px auto" }}>
-        <input
-          type="checkbox"
-          checked={showCompletedOnly}
-          onChange={(e) => onChangeShowCompletedOnly(e.target.checked)}
-        />
-        {" "}完了（チェックtrue）のみ表示
-      </label>
     </main>
   )
 }
-
-
-
