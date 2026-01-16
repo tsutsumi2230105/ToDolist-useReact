@@ -14,6 +14,8 @@ type Props = {
   onDeleteTodo: (id: string) => void
   onToggleTodo: (id: string) => void // ✅追加
   activeCount: number   // ✅ 追加
+  showCompletedOnly: boolean
+  onChangeShowCompletedOnly: (next: boolean) => void
 }
 
 // ✅ ここに onDeleteTodo を追加
@@ -23,8 +25,10 @@ export default function Main({
   onDeleteTodo,
   onToggleTodo,
   activeCount,
+  showCompletedOnly,
+  onChangeShowCompletedOnly,
 }: Props) {
-    const [input, setInput] = useState("")
+  const [input, setInput] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -74,7 +78,19 @@ export default function Main({
         ))}
       </ul>
       <p>残り {activeCount} 件</p>
+    
+      {/* ✅ 追加：表示切り替えUI（場所はここじゃなくてもOK） */}
+      <label style={{ display: "block", width: 550, margin: "12px auto" }}>
+        <input
+          type="checkbox"
+          checked={showCompletedOnly}
+          onChange={(e) => onChangeShowCompletedOnly(e.target.checked)}
+        />
+        {" "}完了（チェックtrue）のみ表示
+      </label>
     </main>
   )
 }
+
+
 

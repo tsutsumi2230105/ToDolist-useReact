@@ -28,6 +28,9 @@ export default function App() {
     }
   })
 
+  // ✅ 追加：完了(true)だけ表示するか
+  const [showCompletedOnly, setShowCompletedOnly] = useState(false)
+
   // ✅ todos が変わるたびに保存
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
@@ -58,16 +61,26 @@ export default function App() {
 
   const activeCount = todos.filter(todo => !todo.completed).length
 
+  // ✅ 追加：表示用の配列（ここがポイント）
+  const visibleTodos = showCompletedOnly
+    ? todos.filter((t) => t.completed)
+    : todos
+
+
   return (
     <>
       <Header />
+
       <Main
-        todos={todos}
+        todos={visibleTodos}   // ✅ ここを差し替え
         onAddTodo={addTodo}
         onDeleteTodo={deleteTodo}
         onToggleTodo={toggleTodo}
-        activeCount={activeCount} 
+        activeCount={activeCount}
+        showCompletedOnly={showCompletedOnly}
+        onChangeShowCompletedOnly={setShowCompletedOnly}
       />
+
       <Footer />
     </>
   )
