@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
 
-function App() {
-  const [count, setCount] = useState(0)
+import TodoMain from "./features/todos/TodoMain.tsx"
+//ToDoアプリのメイン部分
+//・入力欄
+//・Todo一覧
+//・削除、チェックなど画面の中心部
+
+import { useTodos } from "./features/todos/useTodos"
+//カスタムフック//
+
+
+export default function App() {
+  const { todos, addTodo } = useTodos()
+
+  
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <TodoMain
+        todos={todos}
+        addTodo={addTodo}
+      />
+      <Footer />
     </>
   )
 }
-
-export default App
+//TodoMainに対して、操作用の関数を渡し、
+//画面表示と操作を頼んでいる。//
