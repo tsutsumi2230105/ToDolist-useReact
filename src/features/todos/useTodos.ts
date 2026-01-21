@@ -1,9 +1,8 @@
-
 //カスタムフックを使っている。
 import { useState } from "react"
 import type { Todo } from "./types.ts"
 
-export function useTodos() {
+export const useTodos = () => {
   const [todos, setTodos] = useState<Todo[]>([])
 
   const addTodo = (title: string) => {

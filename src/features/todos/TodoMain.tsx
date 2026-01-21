@@ -1,14 +1,12 @@
 import "./todo.scss"
-import type { Todo } from "./types"
-import TodoInput from "./TodoInput"
-import TodoItem from "./TodoItem"
+import TodoInput from "./components/TodoInput"
+import TodoItem from "./components/TodoItem"
+import { useTodos } from "./useTodos"
+//カスタムフック//
 
-type Props = {
-  todos: Todo[]
-  addTodo: (title: string) => void
-}
+export default function TodoMain() {
+  const { todos, addTodo } = useTodos()
 
-export default function TodoMain({ todos, addTodo }: Props) {
   return (
     <main>
       <TodoInput onAdd={addTodo} />

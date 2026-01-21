@@ -1,4 +1,3 @@
-import "./todo.scss"
 import { useState } from "react"
 
 type Props = {

@@ -1,7 +1,6 @@
-$footer-color: #d3d3d3;
-$footer-font-size: 11px;
+@use "../../styles/variables" as *;
 
-.footer-title {
+.footer {
   color: $footer-color;
   font-size: $footer-font-size;
   text-align: center;

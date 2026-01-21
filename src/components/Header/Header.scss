@@ -1,6 +1,4 @@
-$title-color: #b83f45;
-$title-font: 'Noto Serif JP', serif;
-$title-size: 80px;
+@use "../../styles/variables" as *;
 
 .header-title {
   font-size: $title-size;
