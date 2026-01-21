@@ -7,21 +7,7 @@ type Props = {
 export default function TodoItem({ todo }: Props) {
   return (
     <li className="todo-item">
-      <TodoTitle
-        title={todo.title}
-      />
+      <span className = "todo.title">{todo.title}</span>
     </li>
-  )
-}
-
-type TodoTitleProps = {
-  title: string
-}
-
-function TodoTitle({ title }: TodoTitleProps) {
-  return (
-    <span className="todo-title">
-        {title}
-    </span>
   )
 }
