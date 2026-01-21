@@ -7,7 +7,7 @@ type Props = {
 export default function TodoItem({ todo }: Props) {
   return (
     <li className="todo-item">
-      <span className="todo.title">{todo.title}</span>
+      <span className="todo-title">{todo.title}</span>
     </li>
   );
 }
