@@ -1,4 +1,4 @@
-import "./Footer.scss";  // ← ファイル名・大文字小文字も一致させる
+import "./Footer.scss"; // ← ファイル名・大文字小文字も一致させる
 
 const Footer = () => {
   return (
@@ -7,7 +7,7 @@ const Footer = () => {
       <p className="footer">Created by the TodoMVC Team</p>
       <p className="footer">Part of TodoMVC</p>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
