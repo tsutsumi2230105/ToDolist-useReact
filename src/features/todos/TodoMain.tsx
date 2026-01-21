@@ -5,11 +5,11 @@ import { useTodos } from "./useTodos";
 //カスタムフック//
 
 export default function TodoMain() {
-  const { todos, addTodo } = useTodos();
+  const { todos } = useTodos();
 
   return (
     <main>
-      <TodoInput onAdd={addTodo} />
+      <TodoInput />
 
       <ul>
         {todos.map((todo) => (

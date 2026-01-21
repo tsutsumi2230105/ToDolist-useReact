@@ -1,15 +1,13 @@
 import { useState } from "react";
+import { useTodos } from "../useTodos";
 
-type Props = {
-  onAdd: (title: string) => void;
-};
-
-export default function TodoInput({ onAdd }: Props) {
+export default function TodoInput() {
   const [input, setInput] = useState("");
+  const { addTodo } = useTodos();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onAdd(input);
+    addTodo(input);
     setInput("");
   };
 
