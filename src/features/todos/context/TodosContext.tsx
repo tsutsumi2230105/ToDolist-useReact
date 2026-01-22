@@ -5,6 +5,7 @@ type TodosContextValue = {
   todos: Todo[];
   addTodo: (title: string) => void;
   deleteTodo: (id: string) => void;
+  toggleTodo: (id: string) => void;
 };
 
 export const TodosContext = createContext<TodosContextValue | null>(null);
