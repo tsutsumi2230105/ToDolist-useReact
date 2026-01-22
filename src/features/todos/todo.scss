@@ -45,3 +45,22 @@ $padding-right: 60px;
   color: #aaa; // グレーアウト
   text-decoration: line-through; // 打ち消し線（不要なら消してOK）
 }
+
+/* 元のTodoチェックボックスを非表示にする */
+.todo-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  /* Aの画像（チェック前）を表示する */
+  background-image: url("images/checkbox-off.png");
+}
+
+/* チェックされた時のBの画像を表示する */
+.todo-checkbox:checked {
+  background-image: url("images/checkbox-on.png");
+}

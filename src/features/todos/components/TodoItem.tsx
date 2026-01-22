@@ -12,6 +12,7 @@ export default function TodoItem({ todo }: Props) {
     <li className="todo-item">
       <input
         type="checkbox"
+        className="todo-checkbox"
         checked={todo.completed}
         onChange={() => toggleTodo(todo.id)}
       />
