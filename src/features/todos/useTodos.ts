@@ -16,5 +16,10 @@ export const useTodos = () => {
 
     setTodos((prev) => [newTodo, ...prev]);
   };
-  return { todos, addTodo };
+
+  const deleteTodo = (id: string) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
+
+  return { todos, addTodo, deleteTodo };
 };
