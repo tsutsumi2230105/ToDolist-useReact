@@ -1,15 +1,17 @@
 import type { Todo } from "../types";
+import { useTodosContext } from "../context/TodosContext";
 
 type Props = {
   todo: Todo;
-  onDelete: (id: string) => void;
 };
 
-export default function TodoItem({ todo, onDelete }: Props) {
+export default function TodoItem({ todo }: Props) {
+  const { deleteTodo } = useTodosContext(); // ← 自分で取得
+
   return (
     <li className="todo-item">
       <span className="todo-title">{todo.title}</span>
-      <button type="button" onClick={() => onDelete(todo.id)}>
+      <button type="button" onClick={() => deleteTodo(todo.id)}>
         削除
       </button>
     </li>

@@ -1,21 +1,29 @@
 import "./todo.scss";
 import TodoInput from "./components/TodoInput";
 import TodoItem from "./components/TodoItem";
-import { useTodos } from "./useTodos";
+import { TodosProvider } from "./context/TodosProvider";
+import { useTodosContext } from "./context/TodosContext";
 //カスタムフック//
 
-export default function TodoMain() {
-  const { todos, addTodo, deleteTodo } = useTodos();
+function TodoMainBody() {
+  const { todos, addTodo } = useTodosContext();
 
   return (
     <main>
       <TodoInput onAdd={addTodo} />
-
       <ul>
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} onDelete={deleteTodo} />
+          <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
     </main>
+  );
+}
+
+export default function TodoMain() {
+  return (
+    <TodosProvider>
+      <TodoMainBody />
+    </TodosProvider>
   );
 }
