@@ -36,3 +36,12 @@ $padding-right: 60px;
   border-bottom: 2px solid $border-color;
   position: relative;
 }
+
+.todo-title {
+  color: #000;
+}
+
+.todo-titledone {
+  color: #aaa; // グレーアウト
+  text-decoration: line-through; // 打ち消し線（不要なら消してOK）
+}

@@ -15,7 +15,7 @@ export default function TodoItem({ todo }: Props) {
         checked={todo.completed}
         onChange={() => toggleTodo(todo.id)}
       />
-      <span className={todo.completed ? "todo-title done" : "todo-title"}>
+      <span className={todo.completed ? "todo-titledone" : "todo-title"}>
         {todo.title}
       </span>
       <button type="button" onClick={() => deleteTodo(todo.id)}>
