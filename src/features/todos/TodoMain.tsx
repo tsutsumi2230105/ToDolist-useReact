@@ -1,12 +1,15 @@
-import "./todo.scss";
-import TodoInput from "./components/TodoInput";
-import TodoItem from "./components/TodoItem";
-import { TodosProvider } from "./context/TodosProvider";
-import { useTodosContext } from "./context/TodosContext";
+import './todo.scss'
+import TodoInput from './components/TodoInput'
+import TodoItem from './components/TodoItem'
+import TodoCount from './components/TodoCount'
+import { TodosProvider } from './context/TodosProvider'
+import { useTodosContext } from './context/TodosContext'
 //カスタムフック//
 
 function TodoMainBody() {
-  const { todos, addTodo } = useTodosContext();
+  const { todos, addTodo } = useTodosContext()
+
+  const uncompletedCount = todos.filter((t) => !t.completed).length
 
   return (
     <main>
@@ -16,8 +19,9 @@ function TodoMainBody() {
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
+      <TodoCount uncompletedCount={uncompletedCount} />
     </main>
-  );
+  )
 }
 
 export default function TodoMain() {
@@ -25,5 +29,5 @@ export default function TodoMain() {
     <TodosProvider>
       <TodoMainBody />
     </TodosProvider>
-  );
+  )
 }

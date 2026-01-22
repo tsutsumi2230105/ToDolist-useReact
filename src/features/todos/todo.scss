@@ -36,6 +36,11 @@ $padding-right: 60px;
     position: relative;
   }
 
+  /* ToDoCount */
+  &__count {
+    text-align: center;
+  }
+
   /* タイトル */
   &__title {
     color: #000;
@@ -56,9 +61,9 @@ $padding-right: 60px;
     background-position: center;
     width: 24px;
     height: 24px;
-    background-image: url("images/checkbox-off.png");
+    background-image: url('images/checkbox-off.png');
     &:checked {
-      background-image: url("images/checkbox-on.png");
+      background-image: url('images/checkbox-on.png');
     }
   }
 }
