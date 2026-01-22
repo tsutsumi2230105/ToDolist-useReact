@@ -14,8 +14,9 @@ export default function TodoInput({ onAdd }: Props) {
   };
 
   return (
-    <form className="todo-input" onSubmit={handleSubmit}>
+    <form className="todo__input" onSubmit={handleSubmit}>
       <input
+        className="todo__input-field"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="What needs to be done?"
