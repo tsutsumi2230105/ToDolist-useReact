@@ -5,15 +5,15 @@ import { useTodos } from "./useTodos";
 //カスタムフック//
 
 export default function TodoMain() {
-  const { todos } = useTodos();
+  const { todos, addTodo, deleteTodo } = useTodos();
 
   return (
     <main>
-      <TodoInput />
+      <TodoInput onAdd={addTodo} />
 
       <ul>
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} todo={todo} onDelete={deleteTodo} />
         ))}
       </ul>
     </main>
