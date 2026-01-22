@@ -6,11 +6,19 @@ type Props = {
 };
 
 export default function TodoItem({ todo }: Props) {
-  const { deleteTodo } = useTodosContext(); // ← 自分で取得
+  const { deleteTodo, toggleTodo } = useTodosContext(); // ← 自分で取得
 
   return (
-    <li className="todo-item">
-      <span className="todo-title">{todo.title}</span>
+    <li className="todo__item">
+      <input
+        type="checkbox"
+        className="todo__checkbox"
+        checked={todo.completed}
+        onChange={() => toggleTodo(todo.id)}
+      />
+      <span className={todo.completed ? "todo__title--done" : "todo__title"}>
+        {todo.title}
+      </span>
       <button type="button" onClick={() => deleteTodo(todo.id)}>
         削除
       </button>

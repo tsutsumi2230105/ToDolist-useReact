@@ -12,6 +12,7 @@ export const useTodos = () => {
     const newTodo: Todo = {
       id: crypto.randomUUID(),
       title: trimmed,
+      completed: false,
     };
 
     setTodos((prev) => [newTodo, ...prev]);
@@ -21,5 +22,13 @@ export const useTodos = () => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
-  return { todos, addTodo, deleteTodo };
+  const toggleTodo = (id: string) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  };
+
+  return { todos, addTodo, deleteTodo, toggleTodo };
 };
