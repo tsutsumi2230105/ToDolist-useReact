@@ -1,8 +1,8 @@
-type Props = {
-  uncompletedCount: number
-}
+import { useTodosContext } from '../context/TodosContext'
 
-export default function TodoCount({ uncompletedCount }: Props) {
+export default function TodoCount() {
+  const { uncompletedCount } = useTodosContext()
+
   const label = uncompletedCount === 1 ? 'item' : 'items'
 
   return (

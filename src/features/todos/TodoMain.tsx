@@ -9,8 +9,6 @@ import { useTodosContext } from './context/TodosContext'
 function TodoMainBody() {
   const { todos, addTodo } = useTodosContext()
 
-  const uncompletedCount = todos.filter((t) => !t.completed).length
-
   return (
     <main>
       <TodoInput onAdd={addTodo} />
@@ -19,7 +17,7 @@ function TodoMainBody() {
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
-      <TodoCount uncompletedCount={uncompletedCount} />
+      <TodoCount />
     </main>
   )
 }

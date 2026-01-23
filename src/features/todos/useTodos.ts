@@ -31,6 +31,7 @@ export const useTodos = () => {
   }
 
   const uncompletedCount = todos.filter((todo) => !todo.completed).length
+  //ここで計算している。
 
   return { todos, addTodo, deleteTodo, toggleTodo, uncompletedCount }
 }
