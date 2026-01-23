@@ -1,12 +1,12 @@
-import type { Todo } from "../types";
-import { useTodosContext } from "../context/TodosContext";
+import type { Todo } from "../types"
+import { useTodosContext } from "../context/TodosContext"
 
 type Props = {
-  todo: Todo;
-};
+  todo: Todo
+}
 
 export default function TodoItem({ todo }: Props) {
-  const { deleteTodo, toggleTodo } = useTodosContext(); // ← 自分で取得
+  const { deleteTodo, toggleTodo } = useTodosContext() // ← 自分で取得
 
   return (
     <li className="todo__item">
@@ -23,5 +23,5 @@ export default function TodoItem({ todo }: Props) {
         削除
       </button>
     </li>
-  );
+  )
 }

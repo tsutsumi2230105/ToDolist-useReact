@@ -36,6 +36,11 @@ $padding-right: 60px;
     position: relative;
   }
 
+  /* ToDoCount */
+  &__count {
+    text-align: center;
+  }
+
   /* タイトル */
   &__title {
     color: #000;
