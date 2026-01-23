@@ -1,9 +1,20 @@
 //カスタムフックを使っている。
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import type { Todo } from "./types.ts"
 
+const storage_key = "todos"
+
 export const useTodos = () => {
-  const [todos, setTodos] = useState<Todo[]>([])
+  //初期値を　localStorage　から読む
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const savedTodos = localStorage.getItem(storage_key)
+    return savedTodos ? JSON.parse(savedTodos) : []
+  })
+
+  //todosが変わったら保存する
+  useEffect(() => {
+    localStorage.setItem(storage_key, JSON.stringify(todos))
+  }, [todos])
 
   const addTodo = (title: string) => {
     const trimmed = title.trim()
