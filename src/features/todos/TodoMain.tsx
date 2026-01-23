@@ -1,9 +1,9 @@
-import './todo.scss'
-import TodoInput from './components/TodoInput'
-import TodoItem from './components/TodoItem'
-import TodoCount from './components/TodoCount'
-import { TodosProvider } from './context/TodosProvider'
-import { useTodosContext } from './context/TodosContext'
+import "./todo.scss"
+import TodoInput from "./components/TodoInput"
+import TodoItem from "./components/TodoItem"
+import TodoCount from "./components/TodoCount"
+import { TodosProvider } from "./context/TodosProvider"
+import { useTodosContext } from "./context/TodosContext"
 //カスタムフック//
 
 function TodoMainBody() {

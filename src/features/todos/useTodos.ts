@@ -1,6 +1,6 @@
 //カスタムフックを使っている。
-import { useState } from 'react'
-import type { Todo } from './types.ts'
+import { useState } from "react"
+import type { Todo } from "./types.ts"
 
 export const useTodos = () => {
   const [todos, setTodos] = useState<Todo[]>([])
