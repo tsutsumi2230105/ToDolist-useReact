@@ -1,15 +1,15 @@
 import { useState } from "react"
+import { useTodosContext } from "../../context/TodosContext"
 
-type Props = {
-  onAdd: (title: string) => void
-}
-
-export default function TodoInput({ onAdd }: Props) {
+export default function TodoInput() {
+  const { addTodo } = useTodosContext()
   const [input, setInput] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onAdd(input)
+    const trimmed = input.trim()
+    if (!trimmed) return
+    addTodo(trimmed)
     setInput("")
   }
 

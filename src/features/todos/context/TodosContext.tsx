@@ -11,6 +11,7 @@ type TodosContextValue = {
   showActiveTodo: () => void
   showCompletedTodo: () => void
   clearCompletedTodo: () => void
+  allToggleTodo: () => void
   uncompletedCount: number
 }
 
