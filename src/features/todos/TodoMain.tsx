@@ -1,7 +1,8 @@
 import "./todo.scss"
 import TodoInput from "./components/TodoInput"
 import TodoItem from "./components/TodoItem"
-import TodoCount from "./components/TodoCount"
+import TodoCount from "./components/todofooter/TodoCount"
+import TodoFilter from "./components/todofooter/TodoFilter"
 import { TodosProvider } from "./context/TodosProvider"
 import { useTodosContext } from "./context/TodosContext"
 //カスタムフック//
@@ -18,6 +19,7 @@ function TodoMainBody() {
         ))}
       </ul>
       <TodoCount />
+      <TodoFilter />
     </main>
   )
 }

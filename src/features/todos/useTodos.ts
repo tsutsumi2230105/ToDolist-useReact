@@ -14,7 +14,7 @@ export const useTodos = () => {
     return savedTodos ? JSON.parse(savedTodos) : []
   })
 
-  const [filter, setfilter] = useState<Filter>("all")
+  const [filter, setFilter] = useState<Filter>("all")
 
   //todosが変わったら保存する
   useEffect(() => {
@@ -46,9 +46,9 @@ export const useTodos = () => {
     )
   }
 
-  const showAllTodo = () => setfilter("all")
-  const showActiveTodo = () => setfilter("active")
-  const showCompletedTodo = () => setfilter("completed")
+  const showAllTodo = () => setFilter("all")
+  const showActiveTodo = () => setFilter("active")
+  const showCompletedTodo = () => setFilter("completed")
 
   const visibleTodos = todos.filter((todo) => {
     if (filter === "active") return !todo.completed
@@ -61,7 +61,6 @@ export const useTodos = () => {
 
   return {
     todos,
-    filter,
     visibleTodos,
     addTodo,
     deleteTodo,
