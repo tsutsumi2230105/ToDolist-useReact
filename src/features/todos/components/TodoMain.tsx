@@ -1,10 +1,10 @@
 import "./todo.scss"
-import TodoInput from "./components/TodoInput"
-import TodoItem from "./components/TodoItem"
-import TodoCount from "./components/todofooter/TodoCount"
-import TodoFilter from "./components/todofooter/TodoFilter"
-import { TodosProvider } from "./context/TodosProvider"
-import { useTodosContext } from "./context/TodosContext"
+import TodoInput from "./TodoInput"
+import TodoItem from "./TodoItem"
+import TodoCount from "./todofooter/TodoCount"
+import TodoFilter from "./todofooter/TodoFilter"
+import { TodosProvider } from "../context/TodosProvider"
+import { useTodosContext } from "../context/TodosContext"
 //カスタムフック//
 
 function TodoMainBody() {
