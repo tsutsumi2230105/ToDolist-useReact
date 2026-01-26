@@ -7,13 +7,13 @@ import { useTodosContext } from "./context/TodosContext"
 //カスタムフック//
 
 function TodoMainBody() {
-  const { todos, addTodo } = useTodosContext()
+  const { visibleTodos, addTodo } = useTodosContext()
 
   return (
     <main>
       <TodoInput onAdd={addTodo} />
       <ul>
-        {todos.map((todo) => (
+        {visibleTodos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
