@@ -4,12 +4,17 @@ import type { Todo } from "./types.ts"
 
 const storage_key = "todos"
 
+//Filterのリテラル型定義
+type Filter = "all" | "active" | "completed"
+
 export const useTodos = () => {
   //初期値を　localStorage　から読む
   const [todos, setTodos] = useState<Todo[]>(() => {
     const savedTodos = localStorage.getItem(storage_key)
     return savedTodos ? JSON.parse(savedTodos) : []
   })
+
+  const [filter, setFilter] = useState<Filter>("all")
 
   //todosが変わったら保存する
   useEffect(() => {
@@ -41,8 +46,28 @@ export const useTodos = () => {
     )
   }
 
+  const showAllTodo = () => setFilter("all")
+  const showActiveTodo = () => setFilter("active")
+  const showCompletedTodo = () => setFilter("completed")
+
+  const visibleTodos = todos.filter((todo) => {
+    if (filter === "active") return !todo.completed
+    if (filter === "completed") return todo.completed
+    return true
+  })
+
   const uncompletedCount = todos.filter((todo) => !todo.completed).length
   //ここで計算している。
 
-  return { todos, addTodo, deleteTodo, toggleTodo, uncompletedCount }
+  return {
+    todos,
+    visibleTodos,
+    addTodo,
+    deleteTodo,
+    toggleTodo,
+    uncompletedCount,
+    showAllTodo,
+    showActiveTodo,
+    showCompletedTodo,
+  }
 }

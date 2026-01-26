@@ -3,9 +3,13 @@ import type { Todo } from "../types"
 
 type TodosContextValue = {
   todos: Todo[]
+  visibleTodos: Todo[]
   addTodo: (title: string) => void
   deleteTodo: (id: string) => void
   toggleTodo: (id: string) => void
+  showAllTodo: () => void
+  showActiveTodo: () => void
+  showCompletedTodo: () => void
   uncompletedCount: number
 }
 
