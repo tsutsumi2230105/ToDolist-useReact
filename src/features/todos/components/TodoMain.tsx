@@ -1,6 +1,7 @@
-import "./todo.scss"
+import "../todo.scss"
 import TodoInput from "./TodoInput"
 import TodoItem from "./TodoItem"
+import TodoCompletedDelete from "./todofooter/TodoCompletedDelete"
 import TodoCount from "./todofooter/TodoCount"
 import TodoFilter from "./todofooter/TodoFilter"
 import { TodosProvider } from "../context/TodosProvider"
@@ -20,6 +21,7 @@ function TodoMainBody() {
       </ul>
       <TodoCount />
       <TodoFilter />
+      <TodoCompletedDelete />
     </main>
   )
 }

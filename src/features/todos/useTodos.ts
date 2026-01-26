@@ -46,6 +46,10 @@ export const useTodos = () => {
     )
   }
 
+  const clearCompletedTodo = () => {
+    setTodos((prev) => prev.filter((todo) => !todo.completed))
+  }
+
   const showAllTodo = () => setFilter("all")
   const showActiveTodo = () => setFilter("active")
   const showCompletedTodo = () => setFilter("completed")
@@ -66,6 +70,7 @@ export const useTodos = () => {
     deleteTodo,
     toggleTodo,
     uncompletedCount,
+    clearCompletedTodo,
     showAllTodo,
     showActiveTodo,
     showCompletedTodo,
