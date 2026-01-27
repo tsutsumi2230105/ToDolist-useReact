@@ -1,12 +1,12 @@
 import "../todo.scss"
-import TodoInput from "./Todoheader/TodoInput"
+import TodoInput from "./TodoHeader/TodoInput"
 import TodoItem from "./TodoItem"
-import TodoCompletedDelete from "./todofooter/TodoCompletedDelete"
-import TodoCount from "./todofooter/TodoCount"
-import TodoFilter from "./todofooter/TodoFilter"
+import TodoCompletedDelete from "./TodoFooter/TodoCompletedDelete"
+import TodoCount from "./TodoFooter/TodoCount"
+import TodoFilter from "./TodoFooter/TodoFilter"
 import { TodosProvider } from "../context/TodosProvider"
 import { useTodosContext } from "../context/TodosContext"
-import TodoToggle from "./Todoheader/TodoAlltoggle"
+import TodoAllToggle from "./TodoHeader/TodoAllToggle"
 //カスタムフック//
 
 function TodoMainBody() {
@@ -14,7 +14,7 @@ function TodoMainBody() {
 
   return (
     <main>
-      <TodoToggle />
+      <TodoAllToggle />
       <TodoInput />
       <ul>
         {visibleTodos.map((todo) => (

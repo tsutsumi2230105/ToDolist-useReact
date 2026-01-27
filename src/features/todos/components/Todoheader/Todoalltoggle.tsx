@@ -1,6 +1,6 @@
 import { useTodosContext } from "../../context/TodosContext"
 
-export default function TodoToggle() {
+export default function TodoAllToggle() {
   const { allToggleTodo } = useTodosContext()
 
   return (
