@@ -1,19 +1,21 @@
 import "../todo.scss"
-import TodoInput from "./TodoInput"
+import TodoInput from "./TodoHeader/TodoInput"
 import TodoItem from "./TodoItem"
-import TodoCompletedDelete from "./todofooter/TodoCompletedDelete"
-import TodoCount from "./todofooter/TodoCount"
-import TodoFilter from "./todofooter/TodoFilter"
+import TodoCompletedDelete from "./TodoFooter/TodoCompletedDelete"
+import TodoCount from "./TodoFooter/TodoCount"
+import TodoFilter from "./TodoFooter/TodoFilter"
 import { TodosProvider } from "../context/TodosProvider"
 import { useTodosContext } from "../context/TodosContext"
+import TodoAllToggle from "./TodoHeader/TodoAllToggle"
 //カスタムフック//
 
 function TodoMainBody() {
-  const { visibleTodos, addTodo } = useTodosContext()
+  const { visibleTodos } = useTodosContext()
 
   return (
     <main>
-      <TodoInput onAdd={addTodo} />
+      <TodoAllToggle />
+      <TodoInput />
       <ul>
         {visibleTodos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />

@@ -1,9 +1,12 @@
 import { createContext, useContext } from "react"
 import type { Todo } from "../types"
 
+type Filter = "all" | "active" | "completed"
+
 type TodosContextValue = {
   todos: Todo[]
   visibleTodos: Todo[]
+  filter: Filter
   addTodo: (title: string) => void
   deleteTodo: (id: string) => void
   toggleTodo: (id: string) => void
@@ -11,6 +14,7 @@ type TodosContextValue = {
   showActiveTodo: () => void
   showCompletedTodo: () => void
   clearCompletedTodo: () => void
+  allToggleTodo: () => void
   uncompletedCount: number
 }
 

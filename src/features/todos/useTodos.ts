@@ -46,6 +46,13 @@ export const useTodos = () => {
     )
   }
 
+  const allToggleTodo = () => {
+    setTodos((prev) => {
+      const allCompleted = prev.every((item) => item.completed)
+      return prev.map((item) => ({ ...item, completed: !allCompleted }))
+    })
+  }
+
   const clearCompletedTodo = () => {
     setTodos((prev) => prev.filter((todo) => !todo.completed))
   }
@@ -65,10 +72,12 @@ export const useTodos = () => {
 
   return {
     todos,
+    filter,
     visibleTodos,
     addTodo,
     deleteTodo,
     toggleTodo,
+    allToggleTodo,
     uncompletedCount,
     clearCompletedTodo,
     showAllTodo,
