@@ -66,4 +66,19 @@ $padding-right: 60px;
       background-image: url("images/checkbox-on.png");
     }
   }
+
+  /* フィルターの状態 */
+  &__filter {
+    display: flex;
+  }
+
+  &__filter-button {
+    cursor: pointer;
+
+    &--active {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+  }
 }

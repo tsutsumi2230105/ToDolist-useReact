@@ -72,6 +72,7 @@ export const useTodos = () => {
 
   return {
     todos,
+    filter,
     visibleTodos,
     addTodo,
     deleteTodo,
